@@ -18,7 +18,7 @@ index 9df74ff939c319be33b440e1eeebdad2dc8a1023..259061ed1a8c09105985669f6e9e0b37
 +- **Eventos**: registros cronológicos que conectam personagens e missões em localidades específicas.
 +- **Item**: registros dos itens na qual pode aparecer no chão ou serem comprados.
 +- **Inventario**: registros dos itens na qual o personagem possui.
-+
++   
 +## Como Utilizar
 +
 +1. Defina o SGDB de sua preferência (PostgreSQL, MySQL, SQLite etc.).
