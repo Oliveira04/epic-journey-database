@@ -1,10 +1,4 @@
-diff --git a/README.md b/README.md
-index 9df74ff939c319be33b440e1eeebdad2dc8a1023..259061ed1a8c09105985669f6e9e0b375b84844e 100644
---- a/README.md
-+++ b/README.md
-@@ -1 +1,34 @@
--Repositorio criado para criar banco de dados 
-\ No newline at end of file
+
 +# Banco de Dados de Narrativas Interativas
 +
 +Este repositório contém os arquivos necessários para estruturar um banco de dados voltado para o registro de missões, personagens e localidades presentes em campanhas narrativas. O objetivo é centralizar informações de mundo e facilitar consultas analíticas ou integrações com outras aplicações.
@@ -40,4 +34,4 @@ index 9df74ff939c319be33b440e1eeebdad2dc8a1023..259061ed1a8c09105985669f6e9e0b37
 +- Incluir dados fictícios para testes.
 +- Configurar pipelines de CI para validar migrações.
 +
-+Contribuições são bem-vindas! Abra uma issue descrevendo a melhoria ou envie um pull request com as alterações propostas.
+
