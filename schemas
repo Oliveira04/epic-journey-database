@@ -11,18 +11,36 @@ CREATE TABLE ITEM(
     id_item NUMBER PRIMARY KEY,
     name_item VARCHAR2(100) NOT NULL,
     type_item VARCHAR2(50) NOT NULL,
-    with NUMBER DEFAULT 1 NOT NULL,
+    item_weight NUMBER DEFAULT 1 NOT NULL,
     level_min NUMBER DEFAULT 1 NOT NULL,
-    just_mage BOOLEAN DEFAULT FALSE NOT NULL,
-    just_warrior BOOLEAN DEFAULT FALSE NOT NULL,
+    just_mage CHAR(1) DEFAULT FALSE NOT NULL,
+    
 )
 
 CREATE TABLE INVENTORY(
-    characterid NUMBER,
-    itemid NUMBER,
+    characterid NUMBER NOT NULL,
+    itemid NUMBER NOT NULL,
+    amount NUMBER NOT NULL,
+    date_add DATE NOT NULL,
     CONSTRAINT fk_character 
         FOREIGN KEY (characterid)
         REFERENCES CHARACTER(id_character),
+    CONSTRAINT fk_item
         FOREIGN KEY (itemid)
         REFERENCES ITEM(id_item),
+)
+
+CREATE TABLE LOG_INVENTORY(
+    id_log NUMBER PRIMARY KEY,
+    character_log NUMBER NOT NULL,
+    item_log NUMBER NOT NULL, 
+    action VARCHAR2(30) NOT NULL,
+    amount_log NUMBER NOT NULL,
+    CONSTRAINT fk_character_log
+        FOREIGN KEY(character_log)
+        REFERENCES CHARACTER(id_character),
+    CONSTRAINT fk_item_log
+        FOREIGN KEY(item_log)
+        REFERENCES ITEM(id_item),  
+
 )
