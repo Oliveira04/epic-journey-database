@@ -14,5 +14,15 @@ CREATE TABLE ITEM(
     with NUMBER DEFAULT 1 NOT NULL,
     level_min NUMBER DEFAULT 1 NOT NULL,
     just_mage BOOLEAN DEFAULT FALSE NOT NULL,
+    just_warrior BOOLEAN DEFAULT FALSE NOT NULL,
+)
 
+CREATE TABLE INVENTORY(
+    characterid NUMBER,
+    itemid NUMBER,
+    CONSTRAINT fk_character 
+        FOREIGN KEY (characterid)
+        REFERENCES CHARACTER(id_character),
+        FOREIGN KEY (itemid)
+        REFERENCES ITEM(id_item),
 )
