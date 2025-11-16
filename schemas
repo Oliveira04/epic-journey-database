@@ -3,8 +3,7 @@ CREATE TABLE CHARACTER(
     name VARCHAR2(100) NOT NULL,
     level NUMBER DEFAULT 1,
     class VARCHAR2(50) NOT NULL,
-    load_capacity NUMBER DEFAULT 100 NOT NULL,
-    
+    load_capacity NUMBER DEFAULT 100 NOT NULL,    
 )
 
 CREATE TABLE ITEM(

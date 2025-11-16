@@ -1,0 +1,33 @@
+CREATE OR REPLACE PACKAGE pkg_weight_total AS
+       FUNCTION calculate_total_weight(p_character_id IN NUMBER) RETURN NUMBER;
+END pkg_weight_total;
+/
+
+CREATE OR REPLACE PACKAGE BODY pkg_weight_total AS 
+       FUNCTION calculate_total_weight(p_character_id IN NUMBER ) RETURN NUMBER IS
+              v_total_weight NUMBER := 0;
+       BEGIN
+              SELECT SUM(CASE WHEN CHARACTER.load_capacity * ITEM.item_weight > 0 THEN CHARACTER.load_capacity * ITEM.item_weight ELSE 0 END)
+              INTO v_total_weight
+              FROM CHARACTER
+              JOIN ITEM ON CHARACTER.item_id = ITEM.item_id
+              WHERE CHARACTER.character_id = p_character_id;
+              RETURN v_total_weight;
+       END calculate_total_weight;
+END pkg_weight_total;
+/
+
+
+ - Outra opção:
+CREATE OR REPLACE FUNCTION fn_total_weight
+       RETURN NUMBER; 
+       IS
+       p_character_id IN NUMBER;
+BEGIN
+       SELECT SUM(CASE WHEN CHARACTER.load_capacity * ITEM.item_weight > 0 THEN CHARACTER.load_capacity * ITEM.item_weight ELSE 0 END)
+       FROM CHARACTER
+       JOIN ITEM ON CHARACTER.item_id = ITEM.item_id
+       WHERE CHARACTER.character_id = p_character_id;
+       RETURN p_character_id;
+END;
+/

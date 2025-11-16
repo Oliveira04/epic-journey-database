@@ -1,0 +1,9 @@
+{
+    "typescript.suggest.enabled": false,
+    "javascript.suggest.enabled": false,
+    "todomd.webview.autoShowSuggest": false,
+    "unity-code-snippets.autoComplete.attributes": false,
+    "unity-code-snippets.autoComplete.calls": false,
+    "unity-code-snippets.autoComplete.methods": false,
+    "unity-code-snippets.autoComplete.classes": false
+}
