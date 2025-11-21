@@ -1,0 +1,27 @@
+CREATE OR REPLACE PACKAGE add_items AS
+    PROCEDURE add_item(p_id_character IN NUMBER, p_id_item IN NUMBER, p_amount IN NUMBER);
+END add_items;
+/
+
+CREATE OR REPLACE PACKAGE BODY add_items AS
+    PROCEDURE add_item(p_id_character IN NUMBER, p_id_item IN NUMBER, p_amount IN NUMBER) IS
+    BEGIN
+        IF p_id_character IS NOT NULL AND p_id_item IS NOT NULL THEN
+            IF pkg_weight_total.calculate_total_weight(p_character_id) + (item_weigth * p_amount) <= load_capacity THEN
+                INSERT INTO INVENTORY(characterid, itemid, amount)
+                VALUES(p_id_character, p_id_item, p_amount);
+                INSERT INTO LOG_INVENTORY(character_log, item_log, action, amount_log)
+                VALUES(p_id_character, p_id_item, 'add', p_amount);
+            ELSE
+                RAISE_APPLICATION_ERROR(-20001, 'Exceeds load capacity');
+            END IF;
+        ELSE
+            RAISE_APPLICATION_ERROR(-20002, 'Character ID or Item ID is NULL');
+        END IF;
+    END add_item;
+END add_items;
+/
+            
+
+                
+           
